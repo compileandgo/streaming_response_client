@@ -16,9 +16,9 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "/chat",
-                element: <TextGenerator />
+               element: <TextGenerator />
             },
-            // ...more
+
         ]
     }
 ])
