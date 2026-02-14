@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
 
 const SignIn = () => {
-  const { user, loading, signUp } = useAuth()
+  const { user, loading, signIn } = useAuth()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -11,7 +11,7 @@ const SignIn = () => {
     e.preventDefault()
     console.log(email, password);
     
-    await signUp(email, password);
+    await signIn(email, password);
   }
 
   return (

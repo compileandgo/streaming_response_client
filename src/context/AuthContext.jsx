@@ -18,17 +18,49 @@ export const AuthContextProvider = ({ children }) => {
             setLoading(false)
         })
 
-        // return () => {
-        //     listener?.unsubscribe();
-        // };
+        const signIn = async (email, password) => {
+          const { error, data } = await supabase.auth.signInWithPassward({email, password});
+
+          if (error) {
+            console.log("sign in failed:", error.message)
+          }
+          else {
+            console.log("sign in successful.")
+          }
+
+          return { data, error }
+        }
+
+        const signUp = async (email, password) => {
+          const { error, data } = await supabase.auth.signUp({email, password});
+
+          if (error) {
+            console.log("sign up failed:", error.message)
+          }
+          else {
+            console.log("sign up successful.")
+          }
+
+          return { data, error }
+        }
+
+        const signOut = async () => {
+          const { error } = await supabase.auth.signOut();
+          console.log("signed out.")
+          return error;
+        }
+
+        return () => {
+            listener?.subscription.unsubscribe();
+        };
     }, [])
 
     const value = {
         user,
         loading,
-        signIn: async (email, password) => await supabase.auth.signInWithPassword({email, password}),
-        signUp: (email, password) => supabase.auth.signUp({email, password}),
-        signOut: () => supabase.auth.signOut(),
+        signIn,
+        signUp,
+        signOut,
     }
 
     return (

@@ -10,18 +10,24 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Link } from "react-router-dom"
+import { useAuth } from "../hooks/useAuth.js"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export function SignupForm({
   className,
   ...props
 }) {
+  const navigate = useNavigate()
+  const { signUp, isLoading, user } = useAuth();
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden p-0">
         <CardContent className="grid p-0 md:grid-cols-2">
-          <form className="p-6 md:p-8" onSubmit={(e) => {
-            e.preventDefault()
-            console.log(e)}}>
+          <form className="p-6 md:p-8">
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
                 <h1 className="text-2xl font-bold">Create your account</h1>
@@ -31,7 +37,7 @@ export function SignupForm({
               </div>
               <Field>
                 <FieldLabel htmlFor="email">Email</FieldLabel>
-                <Input id="email" type="email" placeholder="m@example.com" required />
+                <Input id="email" onChange={(e) => setEmail(e.target.value)} type="email" placeholder="m@example.com" required />
                 <FieldDescription>
                   We&apos;ll use this to contact you. We will not share your
                   email with anyone else.
@@ -41,7 +47,7 @@ export function SignupForm({
                 <Field className="grid grid-cols-2 gap-4">
                   <Field>
                     <FieldLabel htmlFor="password">Password</FieldLabel>
-                    <Input id="password" type="password" required />
+                    <Input id="password" onChange={(e) => setPass(e.target.value)} type="password" required />
                   </Field>
                   <Field>
                     <FieldLabel htmlFor="confirm-password">
