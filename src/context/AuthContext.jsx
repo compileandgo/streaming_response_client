@@ -19,10 +19,10 @@ export const AuthContextProvider = ({ children }) => {
         })
 
         const signIn = async (email, password) => {
-          const { error, data } = await supabase.auth.signInWithPassward({email, password});
+          const { error, data } = await supabase.auth.signInWithPassword({email, password});
 
           if (error) {
-            console.log("sign in failed:", error.message)
+            console.error("sign in failed:", error.message)
           }
           else {
             console.log("sign in successful.")
@@ -35,7 +35,7 @@ export const AuthContextProvider = ({ children }) => {
           const { error, data } = await supabase.auth.signUp({email, password});
 
           if (error) {
-            console.log("sign up failed:", error.message)
+            console.error("sign up failed:", error.message)
           }
           else {
             console.log("sign up successful.")
