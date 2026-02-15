@@ -33,7 +33,12 @@ Go to the , grab an API key, and hide it in a .env file like it's your search hi
 
 ## 🛠️ Tech Stack
 
----
+| Component     | Technology           |
+|--------------|----------------------|
+| Frontend     | React.js             |
+| Intelligence | Google Gemini API    |
+| Styling      | CSS / Tailwind       |
+| Ego          | Excessive            |
 
 ## 🛑 Disclaimer
 
