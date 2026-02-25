@@ -17,7 +17,7 @@ const TextGenerator = ({ backendUrl }) => {
   return (
     <div>
         <form onSubmit={(e) => handleSubmit(e)}>
-            <input type="text" onChange={(e) => setInput(e.target.value)} placeholder='Ask something...' required />
+            <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder='Ask something...' required />
             <button type='submit'>{isLoading ? "loading" : "send"}</button>
         </form>
 
