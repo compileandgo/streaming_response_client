@@ -25,7 +25,7 @@ Stop procrastinating and run:
 
 ### 3. Sell your soul (Get an API Key)
 
-Go to the , grab an API key, and hide it in a .env file like it's your search history:
+Go to the 'google ai studio', grab an API key, and hide it in a .env file like it's your search history:
 
 ### 4. Ignite the chaos
 
